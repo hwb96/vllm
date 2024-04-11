@@ -86,6 +86,7 @@ async def show_version():
 @app.post("/v1/chat/completions")
 async def create_chat_completion(request: ChatCompletionRequest,
                                  raw_request: Request):
+    print('request:',request)
     generator = await openai_serving_chat.create_chat_completion(
         request, raw_request)
     if isinstance(generator, ErrorResponse):
